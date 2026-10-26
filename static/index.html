@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP Server Generator</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><span class="brand-icon">⚡</span><h1>MCP Server Generator</h1><span class="subtitle">可视化定义 Tools，导出可运行项目</span></div>
+    <div class="actions"><button id="themeBtn" aria-label="切换明暗主题" title="切换明暗主题">☀️ 浅色</button><button id="exampleBtn">载入示例</button><button id="previewBtn">生成预览</button><button id="downloadBtn" class="primary">下载 ZIP</button></div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="card"><h2>项目配置</h2><div class="field"><label for="name">名称</label><input id="name" value="My MCP Server"></div><div class="field"><label for="package">项目包名</label><input id="package" value="my_mcp_server"></div><div class="field"><label for="desc">描述</label><textarea id="desc">Generated MCP server</textarea></div><div class="field"><label for="transport">传输</label><select id="transport"><option value="stdio">stdio（推荐）</option><option value="streamable-http">Streamable HTTP</option></select></div><div id="http" class="row" hidden><div><label for="host">Host</label><input id="host" value="127.0.0.1"></div><div><label for="port">Port</label><input id="port" type="number" value="8000"></div></div></div>
+      <div class="card"><div class="card-title"><h2>Tools</h2><button id="addToolBtn" class="compact" aria-label="添加 Tool">＋</button></div><div id="tools"></div></div>
+    </aside>
+    <section class="editor-pane">
+      <div id="noTool" class="empty">新建或选择一个 Tool</div>
+      <div id="editor" hidden><div class="card"><div class="card-title"><h2>Tool</h2><button id="removeToolBtn" class="danger compact">删除</button></div><div class="row"><div><label for="tn">名称</label><input id="tn"></div><div><label for="handler">处理器</label><select id="handler"><option value="static">模板响应</option><option value="http">HTTP API</option><option value="command">本地命令</option></select></div></div><div class="field"><label for="td">描述</label><textarea id="td"></textarea></div></div><div class="card"><div class="card-title"><h2>参数</h2><button id="addParamBtn" class="compact" aria-label="添加参数">＋</button></div><div id="params"></div></div><div class="card"><h2>处理器配置</h2><div id="config"></div></div></div>
+    </section>
+    <section class="preview-pane"><h2>项目预览</h2><div id="status" class="status">点击“生成预览”</div><div id="tabs" class="tabs"></div><pre id="code">// 生成文件显示于此</pre></section>
+  </main>
+  <script src="/static/app.js"></script>
+</body></html>
